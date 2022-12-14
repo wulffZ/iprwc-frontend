@@ -1,0 +1,72 @@
+<app-content>
+    <h1 class="text-4xl text-black py-3">Archive</h1>
+
+    <div class="collapse collapse-arrow">
+        <input type="checkbox" class="w-32"/>
+        <div class="w-28 collapse-title py-3 px-2 inline-flex justify-center items-center gap-2 border font-medium bg-cyan-500 text-white">
+            Filter
+        </div>
+        <br>
+
+        <div class="collapse-content">
+            <div class="flex overflow-visible">
+                <div class="m-6">
+                    <ul>
+                        <li class="relative flex w-52  items-center justify-center gap-2.5 border-b-2 bg-white px-3 py-3.5 hover:border-gray-400">
+                            <input type="checkbox" id="checkbox-meetingroom" class="peer relative h-5 w-5 shrink-0 appearance-none rounded-sm border
+                     checked:bg-gray-500 hover:ring hover:ring-gray-300"
+                                   (change)="showWorkRoomReservations = !showWorkRoomReservations" />
+                            <label for="checkbox-meetingroom" class="w-full cursor-pointer font-medium text-gray-600">
+                                Meetingrooms
+                            </label>
+                        </li>
+                        <li class="flex w-52 items-center gap-2.5 border-b-2 bg-white px-3 py-2 hover:border-gray-400">
+                            <input type="checkbox" id="checkbox-workroom" class="peer relative left-0 h-5 w-5 shrink-0 appearance-none rounded-sm border
+                    outline-none checked:bg-gray-500 hover:ring hover:ring-gray-300"
+                                   (change)="showMeetingRoomReservations = !showMeetingRoomReservations"
+                            />
+                            <label for="checkbox-workroom" class="inline-block w-full cursor-pointer font-medium text-gray-600">
+                                Workrooms
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overflow-auto">
+        <table class="table table-compact w-full">
+            <thead>
+                <tr>
+                    <th *ngFor="let header of tableHeaders">{{ header }}</th>
+                </tr>
+            </thead>
+            <tbody>
+            <ng-container *ngIf="showMeetingRoomReservations || (!showMeetingRoomReservations && !showWorkRoomReservations)">
+                <tr *ngFor="let reservation of meetingRoomReservations">
+                    <td>Meetingroom</td>
+                    <td>{{ reservation.employee.name}}</td>
+                    <td>{{ reservation.meetingRoom.id }}</td>
+                    <td>{{ reservation.meetingRoom.location.address }}</td>
+                    <td>{{ reservation.startTime }}</td>
+                    <td>{{ reservation.endTime }}</td>
+                    <td>{{ toPresentString(reservation.present) }}</td>
+                </tr>
+            </ng-container>
+            <ng-container *ngIf="showWorkRoomReservations || (!showMeetingRoomReservations && !showWorkRoomReservations)">
+                <tr *ngFor="let reservation of workRoomReservations">
+                    <td>Workroom</td>
+                    <td>{{ reservation.employee.name }}</td>
+                    <td>{{ reservation.workRoom.id }}</td>
+                    <td>{{ reservation.workRoom.location.address }}</td>
+                    <td>{{ reservation.startTime }}</td>
+                    <td>{{ reservation.endTime }}</td>
+                    <td>{{ toPresentString(reservation.present) }}</td>
+                </tr>
+            </ng-container>
+            </tbody>
+        </table>
+    </div>
+
+</app-content>
