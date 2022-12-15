@@ -10,7 +10,6 @@ import { MyReservationComponent } from './reservation/my-reservation/my-reservat
 import { EditReservationComponent } from './reservation/edit-reservation/edit-reservation.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ArchiveComponent } from './management/archive/archive.component';
@@ -40,7 +39,6 @@ import { ChooseLocationComponent } from './management/change-attributes/choose-l
     StartComponent,
     LogoComponent,
     HeaderComponent,
-    FooterComponent,
     DashboardComponent,
     ContentComponent,
     ReservationComponent,
