@@ -35,40 +35,33 @@ export class HeaderComponent {
         this.isLoggedIn = !!this.tokenStorageService.getToken();
 
         if (this.isLoggedIn) {
-            this.authService.getUserDetails().subscribe(
-                data => {
-                    this.currentUser.email = data.email;
-                    this.currentUser.username = data.name;
-                },
-                err => {
-                    console.log("Failed to get user data " + err)
-                });
-        }
-
-        this.authService.getUserDetails().subscribe(
+          this.authService.getUserDetails().subscribe(
             data => {
-                const employee: Employee = data;
-                const roles = employee.roles;
+              const employee: Employee = data;
+              const roles = employee.roles;
 
-                outerloop:
+              this.currentUser.email = data.email;
+              this.currentUser.username = data.name;
+
+              outerloop:
                 for(let i = 0; i<roles.length; i++) {
-                    for(const permission of roles[i].permissions) {
-                        if(permission === 'ADMIN') {
-                            this.isAdmin = true;
-                            break outerloop;
-                        }
+                  for(const permission of roles[i].permissions) {
+                    if(permission === 'ADMIN') {
+                      this.isAdmin = true;
+                      break outerloop;
                     }
+                  }
                 }
 
-                if(this.isAdmin){
-                    this.navItems.push({
-                        display: 'Admin',
-                        path: '/admin'
-                    });
-                }
+              if(this.isAdmin){
+                this.navItems.push({
+                  display: 'Admin',
+                  path: '/admin'
+                });
+              }
             }
-        )
-
+          )
+        }
     }
 
     logout(): void {

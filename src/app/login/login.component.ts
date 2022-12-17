@@ -38,11 +38,20 @@ export class LoginComponent implements OnInit {
     this.authService.login(email, password).subscribe(
       data => {
         this.tokenStorage.saveToken(data.jwt_token);
+        this.authService.getUserDetails().subscribe(
+          userData => {
+            this.isLoginFailed = false;
+            this.isLoggedIn = true;
 
-        this.isLoginFailed = false;
-        this.isLoggedIn = true;
+            window.location.href="/dashboard";
+          }, error => {
+            this.isLoginFailed = true;
+            this.isLoggedIn = false;
+            this.tokenStorage.signOut();
+            console.log(error);
+          }
+        );
 
-        window.location.href = "/dashboard";
       },
       err => {
         console.log(err);
