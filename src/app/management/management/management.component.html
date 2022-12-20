@@ -1,14 +1,15 @@
 <app-content>
-    <h1 class="text-3xl text-black py-3 md:text-3xl min-[320px]:text-xl">Welcome to the admin page!</h1>
-
-    <div class="max-w-xs flex flex-col shadow-sm">
-        <button class="py-3 px-4 inline-flex justify-center items-center gap-2 border font-medium bg-cyan-500 text-white hover:bg-cyan-700"
-                *ngFor="let option of adminOptions"
-                (click)="loadSelectedOption(option)">
-            {{ option }}
-        </button>
+  <div class="grid grid-cols-1 md:grid-cols-2 max-w-6xl gap-4">
+    <div class="hero h-96 bg-base-200 rounded-md"
+         *ngFor="let option of adminOptions">
+      <div class="hero-content text-center">
+        <div class="max-w-md">
+          <h1 class="text-5xl font-bold">{{ option[0] }}</h1>
+          <p class="py-6">{{ option[1]}}</p>
+          <button class="btn btn-primary" (click)="loadSelectedOption(option[0])">{{ option[0] }}</button>
+        </div>
+      </div>
     </div>
-
-
+  </div>
 </app-content>
 

@@ -1,75 +1,65 @@
 import {Component} from '@angular/core';
 import {TokenStorageService} from "../service/token.service";
 import {AuthService} from "../service/auth.service";
-import {Employee} from "../model/employee";
+import {PermissionHelper} from "../helpers/permission.helper";
 
 @Component({
-    selector: 'app-header',
-    templateUrl: './header.component.html',
-    styleUrls: []
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: []
 })
 export class HeaderComponent {
-    isLoggedIn = false;
-    email?: string;
-    currentUser =  { username:'Not logged in', email: ''};
-    isAdmin = false;
+  isLoggedIn = false;
+  email?: string;
+  currentUser = {username: 'Not logged in', email: ''};
+  isAdmin = false;
 
-    constructor(private tokenStorageService: TokenStorageService, private authService: AuthService) {}
+  constructor(private tokenStorageService: TokenStorageService, private authService: AuthService, private permissionHelper: PermissionHelper) {
+  }
 
-    navItems = [
-        {
-            display: 'Dashboard',
-            path: '/dashboard'
-        },
-        {
-            display: 'Reservation',
-            path: '/reservation'
-        },
-        {
-            display: 'Agenda',
-            path: '/calendar'
-        },
-    ];
+  navItems = [
+    {
+      display: 'Dashboard',
+      path: '/dashboard'
+    },
+    {
+      display: 'Reservation',
+      path: '/reservation'
+    },
+    {
+      display: 'Agenda',
+      path: '/calendar'
+    },
+  ];
 
-    ngOnInit(): void {
-        this.isLoggedIn = !!this.tokenStorageService.getToken();
+  ngOnInit(): void {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
 
-        if (this.isLoggedIn) {
-          this.authService.getUserDetails().subscribe(
-            data => {
-              const employee: Employee = data;
-              const roles = employee.roles;
+    if (this.isLoggedIn) {
+      this.authService.getUserDetails().subscribe(
+        userData => {
+          const roles = userData.roles;
 
-              this.currentUser.email = data.email;
-              this.currentUser.username = data.name;
+          this.currentUser.email = userData.email;
+          this.currentUser.username = userData.name;
 
-              outerloop:
-                for(let i = 0; i<roles.length; i++) {
-                  for(const permission of roles[i].permissions) {
-                    if(permission === 'ADMIN') {
-                      this.isAdmin = true;
-                      break outerloop;
-                    }
-                  }
-                }
+          const permissions = this.permissionHelper.rolesToPermissionsList(roles);
 
-              if(this.isAdmin){
-                this.navItems.push({
-                  display: 'Admin',
-                  path: '/admin'
-                });
-              }
-            }
-          )
+          this.isAdmin = this.permissionHelper.hasAdminPermission(permissions);
+
+          if (this.isAdmin) {
+            this.navItems.push({
+              display: 'Admin',
+              path: '/admin'
+            });
+          }
         }
+      )
     }
+  }
 
-    logout(): void {
-        this.tokenStorageService.signOut();
-        window.location.reload();
-    }
-
-
-
-    isExpanded: boolean;
+  logout(): void {
+    this.tokenStorageService.signOut();
+    window.location.reload();
+  }
 }

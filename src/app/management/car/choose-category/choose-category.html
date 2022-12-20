@@ -1,0 +1,13 @@
+<app-content>
+  <div class="grid grid-cols-1 md:grid-cols-2 max-w-6xl gap-4">
+    <div class="hero h-96 bg-base-200 rounded-md" *ngFor="let category of categories">
+      <div class="hero-content text-center">
+        <div class="max-w-md">
+            <h1 class="text-5xl font-bold">{{ category.title }}</h1>
+            <p class="py-6">{{ category.description }}</p>
+            <button class="btn btn-primary" (click)="createForCategory(category.id)">Get Started</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-content>

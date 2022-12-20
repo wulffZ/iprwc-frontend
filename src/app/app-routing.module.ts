@@ -11,7 +11,10 @@ import {MyReservationComponent} from "./reservation/my-reservation/my-reservatio
 import {EditReservationComponent} from "./reservation/edit-reservation/edit-reservation.component";
 import {MakeReservationComponent} from "./reservation/make-reservation/make-reservation.component";
 import {CalendarComponent} from "./calendar/calendar.component";
-import {ChangeAttributesComponent} from "./management/change-attributes/change-attributes.component";
+import {ShowComponent} from "./show/show.component";
+import {ChooseCategory} from "./management/car/choose-category/choose-category";
+import {CreateCategoryComponent} from "./management/category/create-category/create-category.component";
+import {CreateCarComponent} from "./management/car/create-car/create-car.component";
 
 
 const routes: Routes = [
@@ -19,6 +22,7 @@ const routes: Routes = [
     {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
+    {path: 'car/:id', component: ShowComponent},
     {path: 'admin', component: ManagementComponent, canActivate: [AuthGuard]},
     {path: 'archive', component: ArchiveComponent, canActivate: [AuthGuard]},
     {path: 'reservation', component: ReservationComponent, canActivate: [AuthGuard]},
@@ -26,7 +30,9 @@ const routes: Routes = [
     {path: 'my-reservation', component: MyReservationComponent, canActivate: [AuthGuard]},
     {path: 'edit-reservation', component: EditReservationComponent, canActivate: [AuthGuard]},
     {path: 'calendar', component: CalendarComponent, canActivate: [AuthGuard]},
-    {path: 'change-attributes', component: ChangeAttributesComponent, canActivate: [AuthGuard]},
+    {path: 'choose-category', component: ChooseCategory, canActivate: [AuthGuard]},
+    {path: 'create-category', component: CreateCategoryComponent, canActivate: [AuthGuard]},
+    {path: 'create-car/:category_id', component: CreateCarComponent, canActivate: [AuthGuard]},
     {path: '**', redirectTo: 'dashboard'}
 ];
 

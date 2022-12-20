@@ -12,15 +12,7 @@
 
     <hr>
     <div class="m-6">
-        <div *ngIf="showLocation">
-            <app-choose-location (clickLocation)="showRooms($event)"
-                                 (locationListCopy)="setLocationList($event)"></app-choose-location>
-        </div>
-
-        <div *ngIf="showRoom">
-            <app-choose-room (clickReturnButton)="showLocations()" (selectedRoom)="setSelectedRoom($event)"
-                             [selectedLocation]="selectedLocation"></app-choose-room>
-        </div>
+<!--      -->
     </div>
     <div class="m-6" *ngIf="showMakeReservation">
         <div class="container">
