@@ -4,24 +4,35 @@ import {Injectable} from "@angular/core";
 const path = "http://localhost:8080/api/category"
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class CategoryService {
 
-    constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
-    index() {
-        return this.http.get(path, {})
-    }
+  index() {
+    return this.http.get(path, {})
+  }
 
-    show(id: number) {
-        return this.http.get(path + "/" + id, {})
-    }
+  show(id: number) {
+    return this.http.get(path + "/" + id, {})
+  }
 
-    store(title: string, description: string) {
+  store(title: string, description: string) {
 
-      return this.http.post(path, {
-        title, description
-      })
-    }
+    return this.http.post(path, {
+      title, description
+    })
+  }
+
+  update(id: number, title: string, description: string) {
+    return this.http.put(path + "/" + id, {
+      title, description
+    })
+  }
+
+  delete(id: number) {
+    return this.http.delete(path + "/" + id, {});
+  }
 }

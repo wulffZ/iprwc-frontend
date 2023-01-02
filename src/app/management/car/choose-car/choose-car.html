@@ -1,0 +1,15 @@
+<app-content>
+  <div class="grid grid-cols-1 md:grid-cols-2 max-w-6xl gap-4">
+    <div class="hero h-96 bg-base-200 rounded-md" *ngFor="let car of cars">
+      <div class="hero-content text-center">
+        <div class="max-w-md">
+            <h1 class="text-5xl font-bold">{{ car.title }}</h1>
+            <img class="w-48 rounded-md m-auto" src="{{ car['thumbnailUri'] }}">
+            <p class="py-6">{{ car.description }}</p>
+            <button class="btn btn-primary" (click)="edit(car.id)">Edit</button>
+            <button class="btn btn-primary ml-2" (click)="delete(car.id)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-content>

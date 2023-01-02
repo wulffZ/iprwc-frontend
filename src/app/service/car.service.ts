@@ -20,9 +20,18 @@ export class CarService {
     }
 
     store(title: string, description: string, category: Category, manufacturer: string, year: number, km: number, cylinders: number, engine_displacement: number, thumbnail_uri: string) {
-
       return this.http.post(path, {
         title, description, category, manufacturer, year, km, cylinders, engine_displacement, thumbnail_uri
       })
+    }
+
+    update(id: number, title: string, description: string, category: Category, manufacturer: string, year: number, km: number, cylinders: number, engine_displacement: number, thumbnail_uri: string) {
+      return this.http.put(path + "/" + id, {
+        title, description, category, manufacturer, year, km, cylinders, engine_displacement, thumbnail_uri
+      });
+    }
+
+    delete(id: number) {
+      return this.http.delete(path + "/" + id, {});
     }
 }

@@ -22,14 +22,6 @@ export class HeaderComponent {
       display: 'Dashboard',
       path: '/dashboard'
     },
-    {
-      display: 'Reservation',
-      path: '/reservation'
-    },
-    {
-      display: 'Agenda',
-      path: '/calendar'
-    },
   ];
 
   ngOnInit(): void {
