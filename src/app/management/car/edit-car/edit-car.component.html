@@ -35,6 +35,16 @@
                 name="manufacturer"
                 required>
             </div>
+            <div class="form-group w-full">
+              <label class="text-3xl font-bold text-gray-400" for="title">Price</label>
+              <input
+                type="text"
+                id="price"
+                class="form-control mt-2 mb-2 text-lg px-6 text-center align-center rounded-md text-gray-200 bg-gray-500 w-full"
+                [(ngModel)]="car.price"
+                name="price"
+                required>
+            </div>
             <div class="flex flex-row w-full gap-2">
               <div class="form-group w-1/2">
                 <label class="text-2xl font-bold text-gray-400" for="title">Year</label>

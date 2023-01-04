@@ -50,13 +50,14 @@ export class CreateCarComponent implements OnInit {
     const title = form.value.title;
     const description = form.value.description;
     const manufacturer = form.value.manufacturer;
+    const price = form.value.price;
     const year = form.value.year;
     const km = form.value.km;
     const cylinders = form.value.cylinders;
     const engine_displacement = form.value.engine_displacement;
 
     this.imgurService.upload(this.thumbnail).subscribe(res =>
-      this.carService.store(title, description, this.category, manufacturer, year, km, cylinders, engine_displacement, res['data'].link).subscribe(
+      this.carService.store(title, description, this.category, manufacturer, price, year, km, cylinders, engine_displacement, res['data'].link).subscribe(
         data => {
           if (data["code"] === "CREATED") {
             this.showSuccess = true;

@@ -9,10 +9,12 @@ export class Car {
     private _engine_displacement: number;
     private _cylinders: number;
     private _year: number;
-    private _km: number
+    private _km: number;
+    private _price: number;
+    private _sold: boolean;
     private _thumbnail_uri: string;
 
-    constructor(id: number, title: string, _description: string, _category: Category, manufacturer: string, engine_displacement: number, cylinders: number, year: number, km: number, thumbnail_uri: string) {
+    constructor(id: number, title: string, _description: string, _category: Category, manufacturer: string, engine_displacement: number, cylinders: number, year: number, km: number, price: number, sold: boolean, thumbnail_uri: string) {
         this._id = id;
         this._title = title;
         this._description = _description;
@@ -22,6 +24,8 @@ export class Car {
         this._cylinders = cylinders;
         this._year = year;
         this._km = km;
+        this._price = price;
+        this._sold = sold;
         this._thumbnail_uri = thumbnail_uri;
     }
 
@@ -96,6 +100,14 @@ export class Car {
 
   set km(value: number) {
     this._km = value;
+  }
+
+  get price(): number {
+    return this._price;
+  }
+
+  set price(value: number) {
+    this._price = value;
   }
 
   get thumbnail_uri(): string {

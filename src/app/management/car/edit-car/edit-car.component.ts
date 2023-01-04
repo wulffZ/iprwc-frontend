@@ -52,11 +52,7 @@ export class EditCarComponent implements OnInit {
   }
 
   store(thumbnail_uri?) {
-    if(thumbnail_uri == null) {
-      thumbnail_uri = this.car['thumbnailUri']
-    }
-
-    this.carService.update(this.car_id, this.car.title, this.car.description, this.car.category, this.car.manufacturer, this.car.year, this.car.km, this.car.cylinders, this.car.engine_displacement, thumbnail_uri['data'].link).subscribe(
+    this.carService.update(this.car_id, this.car.title, this.car.description, this.car.category, this.car.manufacturer, this.car.price, this.car.year, this.car.km, this.car.cylinders, this.car.engine_displacement, thumbnail_uri == null ? this.car['thumbnailUri'] : thumbnail_uri['data'].link).subscribe(
       data => {
         if (data["code"] === "CREATED") {
           this.showSuccess = true;
