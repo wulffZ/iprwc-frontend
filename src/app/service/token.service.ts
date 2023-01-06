@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {EncryptionService} from "./auth.encryption.service";
 
 const TOKEN_KEY = 'auth-token';
-const USER_KEY = 'auth-user';
 
 @Injectable({
   providedIn: 'root'

@@ -1,8 +1,9 @@
 import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {Category} from "../model/category";
+import {environment} from "../../environments/environment";
 
-const path = "http://localhost:8080/api/car"
+const path = environment.apiUrl
 
 @Injectable({
     providedIn: 'root'
