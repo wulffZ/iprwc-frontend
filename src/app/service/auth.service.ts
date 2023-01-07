@@ -40,6 +40,6 @@ export class AuthService {
     }
 
     getUserDetails(): Observable<any> {
-        return this.http.get("http://localhost:8080/api" + '/user/info', {});
+        return this.http.get(AUTH_API + '/user/info', {});
     }
 }
