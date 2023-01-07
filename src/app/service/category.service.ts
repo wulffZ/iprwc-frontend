@@ -2,7 +2,7 @@ import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {environment} from "../../environments/environment";
 
-const path = environment.apiUrl
+const path = environment.apiUrl  + "/category"
 
 @Injectable({
   providedIn: 'root'

@@ -3,7 +3,7 @@ import {Injectable} from "@angular/core";
 import {Category} from "../model/category";
 import {environment} from "../../environments/environment";
 
-const path = environment.apiUrl
+const path = environment.apiUrl + "/car"
 
 @Injectable({
     providedIn: 'root'

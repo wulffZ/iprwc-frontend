@@ -4,7 +4,7 @@ import {Category} from "../model/category";
 import {Car} from "../model/car";
 import {environment} from "../../environments/environment";
 
-const path = environment.apiUrl
+const path = environment.apiUrl  + "/cart"
 
 const KEY = 'cart-items';
 
