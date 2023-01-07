@@ -40,6 +40,6 @@ export class AuthService {
     }
 
     getUserDetails(): Observable<any> {
-        return this.http.get("http://http://83.83.127.105:8080/" + 'api/user/info', {});
+        return this.http.get("http://83.83.127.105:8080/" + 'api/user/info', {});
     }
 }
