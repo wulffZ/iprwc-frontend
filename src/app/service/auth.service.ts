@@ -5,7 +5,7 @@ import {hashSync} from "bcryptjs";
 import {EncryptionService} from "./auth.encryption.service";
 import {environment} from "../../environments/environment";
 
-const AUTH_API = environment.apiUrl;
+const AUTH_API = environment.apiUrlAuth;
 
 const httpOptions = {
     headers: new HttpHeaders({
