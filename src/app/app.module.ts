@@ -5,7 +5,6 @@ import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { CalendarComponent } from './calendar/calendar.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -26,7 +25,6 @@ import {EditCategoryComponent} from "./management/category/edit-category/edit-ca
 @NgModule({
   declarations: [
     AppComponent,
-    CalendarComponent,
     LoginComponent,
     RegisterComponent,
     ManagementComponent,
