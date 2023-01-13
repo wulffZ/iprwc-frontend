@@ -1,0 +1,51 @@
+<script src="../service/location.service.ts"></script>
+<app-content>
+    <div class="grid grid-cols-1 max-w-6xl">
+      <div class="card bg-base-100 shadow-xl m-2" *ngIf="car">
+        <figure><img class="h-96 object-contain rounded-b-xl" src="{{ car['thumbnailUri'] }}" alt="Car thumbnail image" /></figure>
+        <div class="card-body">
+          <h2 class="card-title">
+            {{ car.title }}
+          </h2>
+          <p>{{ car.description }}</p>
+          <div class="card-actions justify-start">
+            <h1 class="font-semibold">General information</h1>
+            <div class="stats stats-horizontal shadow w-full mt-2 bg-base-200">
+              <div class="stat">
+                <div class="stat-title">Manufacturer</div>
+                <div class="stat-value">{{ car.manufacturer }}</div>
+              </div>
+
+              <div class="stat">
+                <div class="stat-title">Year of manufacturing</div>
+                <div class="stat-value">{{ car.year }}</div>
+              </div>
+
+              <div class="stat">
+                <div class="stat-title">Price</div>
+                <div class="stat-value">{{ car.price }}	&euro;</div>
+              </div>
+            </div>
+
+            <h1 class="font-semibold mt-4">Engine information</h1>
+            <div class="stats stats-horizontal shadow w-full mt-2 bg-base-200">
+              <div class="stat">
+                <div class="stat-title">Cylinders</div>
+                <div class="stat-value">{{ car.cylinders }}</div>
+              </div>
+
+              <div class="stat">
+                <div class="stat-title">Engine displacement</div>
+                <div class="stat-value">{{ car.engine_displacement }}</div>
+              </div>
+
+              <div class="stat">
+                <div class="stat-title">Kilometers</div>
+                <div class="stat-value">{{ car.km }}km</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</app-content>

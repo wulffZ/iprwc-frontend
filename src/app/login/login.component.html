@@ -1,80 +1,95 @@
-<div class="flex h-screen">
-    <div class="flex flex-col sm:justify-center items-center w-full pt-6 sm:pt-0 m-auto">
-        <div>
-            <img src="assets/images/CGI_logo.png" class="w-48">
+<div class="flex flex-col md:flex-row w-full sm:pt-0 m-auto">
+  <div class="flex flex-col md:w-1/2">
+    <div class="hero min-h-screen bg-auth h-screen">
+      <div class="hero-overlay bg-opacity-60"></div>
+      <div class="hero-content text-center text-neutral-content">
+        <div class="max-w-md">
+          <h1 class="mb-5 text-5xl text-gray-200 font-bold">Welcome</h1>
+          <p class="text-xl">Our large collection features some of the most exclusive Japanese imports</p>
+          <p class="mb-5">If you do not yet have an account, please register</p>
+          <a class="btn bg-black" href="register">Register</a>
         </div>
-
-        <div class="w-full sm:max-w-md mt-6 px-6 py-4 shadow-lg overflow-hidden sm:rounded-lg bg-gray-700">
-            <form
-                *ngIf="!isLoggedIn"
-                name="form"
-                (ngSubmit)="f.form.valid && onSubmit()"
-                #f="ngForm"
-                novalidate
-            >
-
-                <!-- Email Address -->
-                <div>
-                    <label for="email" class="block font-medium text-sm text-gray-200">Email</label>
-
-                    <input id="email"
-                           class="block mt-1 w-full p-1 rounded-md focus:ring-0 bg-gray-200 shadow-sm text-gray-900"
-                           type="email"
-                           name="email"
-                           [(ngModel)]="form.email"
-                           required
-                           #email="ngModel">
-                    <div
-                        class="text-red-400 p-2"
-                        *ngIf="email.errors && f.submitted">
-                        Voer alstublieft een geldig email in
-                    </div>
-
-                </div>
-
-                <!-- Password -->
-                <div class="mt-4">
-                    <div class="flex">
-                        <label for="password" class="block font-medium text-sm text-gray-200">Wachtwoord</label>
-
-                    </div>
-
-                    <input id="password"
-                           class="block mt-1 w-full p-1 rounded-md focus:ring-0 bg-gray-200 shadow-sm text-gray-900"
-                           type="password"
-                           name="password"
-                           [(ngModel)]="form.password"
-                           required
-                           minlength="6"
-                           #password="ngModel">
-                    <div
-                        class="text-red-400 p-2"
-                        *ngIf="password.errors && f.submitted">
-                        <div *ngIf="password.errors.required">Een wachtwoord is vereist</div>
-                        <div *ngIf="password.errors.minlength">
-                            Wachtwoord moet minimaal 6 characters zijn.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Register -->
-                <div class="flex mt-4">
-                    <a class="text-sm text-gray-100 hover:text-gray-400 transition duration-150 ease-in-out my-auto underline"
-                       href="register">
-                        Geen account?
-                    </a>
-
-                    <button
-                        class="ml-auto inline-flex items-center px-4 py-2 border bg-gray-600 rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-800 transition ease-in-out duration-150">
-                        LOGIN
-                    </button>
-                </div>
-                <div
-                    class="text-red-400 p-2"
-                    *ngIf="f.submitted && isLoginFailed">
-                    Er is iets misgegaan. Probeer het opnieuw
-                </div>
-            </form>
-        </div>
+      </div>
     </div>
+
+    <div class="md:invisible absolute bottom-0 right-0 p-6">
+     <a (click)="scrollToLogin()" class="underline">Already have an account?</a>
+    </div>
+  </div>
+  <div class="flex flex-col md:w-1/2 h-screen sm:justify-center items-center bg-black">
+    <div class="scrollTo"></div>
+
+    <div>
+      <img src="assets/images/svg/logo-white.svg" class="w-96">
+    </div>
+
+    <div class="w-full xl:max-w-md max-w-xs px-6 py-4 overflow-hidden rounded-md bg-white">
+      <form
+        *ngIf="!isLoggedIn"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+      >
+
+        <!-- Email Address -->
+        <div>
+          <label for="email" class="block font-medium text-sm text-gray-800">Email</label>
+
+          <input id="email"
+                 class="block mt-1 w-full p-1 rounded-md focus:ring-0 bg-gray-200 shadow-sm text-gray-900"
+                 type="email"
+                 name="email"
+                 [(ngModel)]="form.email"
+                 required
+                 #email="ngModel">
+          <div
+            class="text-red-400 p-2"
+            *ngIf="email.errors && f.submitted">
+            Voer alstublieft een geldig email in
+          </div>
+
+        </div>
+
+        <!-- Password -->
+        <div class="mt-4">
+          <div class="flex">
+            <label for="password" class="block font-medium text-sm text-gray-800">Wachtwoord</label>
+
+          </div>
+
+          <input id="password"
+                 class="block mt-1 w-full p-1 rounded-md focus:ring-0 bg-gray-200 shadow-sm text-gray-900"
+                 type="password"
+                 name="password"
+                 [(ngModel)]="form.password"
+                 required
+                 minlength="6"
+                 #password="ngModel">
+          <div
+            class="text-red-400 p-2"
+            *ngIf="password.errors && f.submitted">
+            <div *ngIf="password.errors.required">Een wachtwoord is vereist</div>
+            <div *ngIf="password.errors.minlength">
+              Wachtwoord moet minimaal 6 characters zijn.
+            </div>
+          </div>
+        </div>
+
+        <!-- Register -->
+        <div class="flex mt-4">
+
+          <button
+            class="btn btn-primary ml-auto inline-flex">
+            LOGIN
+          </button>
+        </div>
+        <div
+          class="text-red-400 p-2"
+          *ngIf="f.submitted && isLoginFailed">
+          Er is iets misgegaan. Probeer het opnieuw
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
